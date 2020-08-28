@@ -3,7 +3,7 @@
 
 if [ "${SYNC_BUCKET}" == "true" ]
 then
-    mc alias set local http://localhost:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY} --api S3v4
+    mc alias set local http://${MINIO_SERVER_CONTAINER_NAME}:9000 ${MINIO_ACCESS_KEY} ${MINIO_SECRET_KEY} --api S3v4
     mc alias set s3 https://s3.amazonaws.com ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY} --api S3v4
     mc mirror s3/${SYNC_BUCKET_NAME} local/${SYNC_BUCKET_NAME}
 fi
